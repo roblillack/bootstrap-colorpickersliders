@@ -59,6 +59,7 @@
           titleswatchesadd: 'Add color to swatches',
           titleswatchesremove: 'Remove color from swatches',
           titleswatchesreset: 'Reset to default swatches',
+          swatches_before_sliders: false,
           order: {},
           labels: {},
           onchange: function() {
@@ -94,7 +95,10 @@
           rgbgreen: 'RGB-Green',
           rgbblue: 'RGB-Blue',
           opacity: 'Opacity',
-          preview: 'Preview'
+          preview: 'Preview',
+          hsvpanel: 'HSV Panel',
+          swatchespanel: 'Swatches',
+          sliderspanel: 'Sliders'
         }, options.labels);
       }
 
@@ -302,13 +306,16 @@
           }
 
           if (settings.hsvpanel) {
-            color_picker_html += '<li><a href="#" class="cp-pill-hsvpanel">HSV panel</a></li>';
+            color_picker_html += '<li><a href="#" class="cp-pill-hsvpanel">' + settings.labels.hsvpanel + '</a></li>';
+          }
+          if (settings.swatches && settings.swatches_before_sliders) {
+            color_picker_html += '<li><a href="#" class="cp-pill-swatches">' + settings.labels.swatchespanel + '</a></li>';
           }
           if (settings.sliders && sliders.length > 0) {
-            color_picker_html += '<li><a href="#" class="cp-pill-sliders">Sliders</a></li>';
+            color_picker_html += '<li><a href="#" class="cp-pill-sliders">' + settings.labels.sliderspanel + '</a></li>';
           }
-          if (settings.swatches) {
-            color_picker_html += '<li><a href="#" class="cp-pill-swatches">Swatches</a></li>';
+          if (settings.swatches && !settings.swatches_before_sliders) {
+            color_picker_html += '<li><a href="#" class="cp-pill-swatches">' + settings.labels.swatchespanel + '</a></li>';
           }
 
           color_picker_html += '</ul>';
